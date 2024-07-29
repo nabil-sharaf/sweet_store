@@ -26,7 +26,20 @@
 
     <!-- Main content -->
     <section class="content">
-        @yield('content')
+       <div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <img src="{{asset('')}}" style='height:80px;' class="card-img-top" alt="Product Name">
+      <div class="card-body">
+        <h5 class="card-title">اسم المنتج</h5>
+        <p class="card-text">وصف موجز للمنتج</p>
+        <p class="card-text"><strong>السعر: $99.99</strong></p>
+        <a href="#" class="btn btn-primary">عرض التفاصيل</a>
+      </div>
+    </div>
+  </div>
+  <!-- كرر هذا لكل منتج -->
+</div>
     </section>
     <!-- /.content -->
   </div>

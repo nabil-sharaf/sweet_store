@@ -1,4 +1,4 @@
- <body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -12,8 +12,33 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
-    </ul>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-user"></i>
+          <span class="badge badge-danger navbar-badge"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-sm-left">
+          <a href="#" class="dropdown-item">
+               عرض الملف الشخصي
+          </a>
+          <a href="#" class="dropdown-item" onclick="document.getElementById('postForm').submit(); return false;">
+                   <form id= 'postForm' method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            تسجيل خروج
+                        
+                      @if(auth('admin')->check())
+                      <input type="hidden"  name="type" value="admin">
+                      @else
+                     <input type="hidden"  name="type" value="web">
+                      @endif
 
+                    </form>
+          </a>
+        </div>
+      </li>
+
+    </ul>
+    
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
