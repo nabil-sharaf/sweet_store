@@ -1,8 +1,8 @@
-@include('layouts.head')
+@include('admin.layouts.head')
 
-@include('layouts.navbar')
+@include('admin.layouts.navbar')
 
-@include('layouts.main_sidebar')
+@include('admin.layouts.main_sidebar')
 
    <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -44,4 +44,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
- @include('layouts.footer')
+ @include('admin.layouts.footer')

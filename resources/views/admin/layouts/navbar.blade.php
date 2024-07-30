@@ -22,16 +22,9 @@
                عرض الملف الشخصي
           </a>
           <a href="#" class="dropdown-item" onclick="document.getElementById('postForm').submit(); return false;">
-                   <form id= 'postForm' method="POST" action="{{ route('logout') }}">
+                   <form id= 'postForm' method="POST" action="{{ route('admin.logout') }}">
                             @csrf
                             تسجيل خروج
-                        
-                      @if(auth('admin')->check())
-                      <input type="hidden"  name="type" value="admin">
-                      @else
-                     <input type="hidden"  name="type" value="web">
-                      @endif
-
                     </form>
           </a>
         </div>
@@ -63,7 +56,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{asset('img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="{{asset('admin/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -79,7 +72,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{asset('img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="{{asset('admin/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -95,7 +88,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{asset('img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="{{asset('admin/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
