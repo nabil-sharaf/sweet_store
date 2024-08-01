@@ -11,7 +11,7 @@ class Category extends Model
     use HasFactory;
     
 
-    protected $fillable = ['name', 'parent_id'];
+    protected $fillable = ['name','description','parent_id'];
 
     public function children()
     {
@@ -28,4 +28,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Product::class);
     }
+    
+    public function allProducts() {
+        return $this->products()->with('category.allProducts');
+    }
+
 }

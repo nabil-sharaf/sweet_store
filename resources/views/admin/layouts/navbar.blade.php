@@ -25,6 +25,7 @@
                    <form id= 'postForm' method="POST" action="{{ route('admin.logout') }}">
                             @csrf
                             تسجيل خروج
+
                     </form>
           </a>
         </div>

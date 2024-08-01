@@ -14,4 +14,4 @@
             </div>
         </div>
     </div>
-</x-admmin-layout>
+</x-admin-layout>
