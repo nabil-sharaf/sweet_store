@@ -6,73 +6,68 @@
             <!-- /.card -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title float-left" >المنتجات</h3>
+                <a href="{{ route('admin.products.create') }}" class="btn btn-primary float-left mr-2">
+                    <i class="fas fa-plus mr-1"></i> إضافة منتج جديد
+                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered text-center">
                   <thead>                  
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th style="width: 35%">اسم المنتج</th>
-                      <th>وصف المنتج</th>
-                      <th style="width: 20%">العمليات</th>
+                      <th>#</th>
+                      <th>اسم المنتج</th>
+                      <th>الوصف</th>
+                      <th>سعر المنتج</th>
+                      <th>الكمية</th>
+                      <th>صورة المنتج</th>
+                      <th>القسم</th>
+                      <th>العمليات</th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($products as $product)
                     <tr>
-                      <td>1.</td>
-                      <td>Update software</td>
+                      <td>{{ $loop->iteration }}.</td>
+                      <td>{{ $product->name }}</td>
                       <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
+                        {{ Str::limit($product->description, 30, ' ....') }}
                       </td>
-                      <td><span class="badge bg-danger">55%</span></td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Clean database</td>
+                      <td>{{ $product->price }}</td>
+                      <td>{{ $product->quantity }}</td>
                       <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-warning" style="width: 70%"></div>
-                        </div>
+                        @if($product->images->first())
+                            <img src="{{ asset('storage/' . $product->images->first()->path) }}" alt="{{ $product->name }}" style="width: 50px; height: 50px; object-fit: cover;">
+                        @else
+                            <span>لا توجد صورة</span>
+                        @endif
                       </td>
-                      <td><span class="badge bg-warning">70%</span></td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Cron job running</td>
                       <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-primary" style="width: 30%"></div>
-                        </div>
+                        {{ $product->categories->pluck('name')->implode(', ') }}
                       </td>
-                      <td><span class="badge bg-primary">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
                       <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-success" style="width: 90%"></div>
-                        </div>
+                        <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-sm btn-warning mr-1" title="عرض التفاصيل">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-sm btn-info mr-1" title="تعديل">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" title="حذف" onclick="return confirm('هل أنت متأكد من حذف هذا المنتج؟')">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
                       </td>
-                      <td><span class="badge bg-success">90%</span></td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <ul class="pagination pagination-sm m-0 float-right">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                </ul>
+              <div class="card-footer">
+                {{ $products->links('vendor.pagination.custom') }}
               </div>
             </div>
 @endsection
-
