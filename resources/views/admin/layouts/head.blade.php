@@ -31,5 +31,6 @@
   <!-- Custom style for RTL -->
   <link rel="stylesheet" href="{{asset('admin/css/custom.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 </head>

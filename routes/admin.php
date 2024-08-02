@@ -1,6 +1,6 @@
 <?php 
 
-
+use App\Http\Controllers\Admin as Adm;
 
     Route::middleware(['admin'])
             ->name('admin.')->prefix('admin')
@@ -12,14 +12,15 @@
         
 //--------------------- Categoris Routes --------------------------
         
-        Route::resource('/categories',App\Http\Controllers\Admin\CategoryController::class);
+        Route::resource('/categories',Adm\CategoryController::class);
         
         //Route::get('/category/{id}/products', [CategoryController::class, 'getCategoryProducts']);
 
 //--------------------- Products Routes -----------------------------
         
-        Route::resource('/products', App\Http\Controllers\Admin\ProductController::class);
-    
+        Route::resource('/products', Adm\ProductController::class);
+        Route::delete('/products/remove-image/{id}', [App\Http\Controllers\Admin\ProductController::class, 'removeImage'])->name('products.remove-image');
+
 //---------------------  ------------------------
         
     });

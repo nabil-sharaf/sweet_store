@@ -52,6 +52,7 @@
 <!-- Toastr Cdn -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script>
      toastr.options = {
@@ -69,6 +70,9 @@
         toastr.error("{{ Session::get('error') }}");
     
     @endif
+    
 </script>
+
+    @stack('scripts')
 </body>
 </html>

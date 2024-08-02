@@ -84,12 +84,6 @@
                   <p>إضافة منتج</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.products.edit',1) }}" class="nav-link {{ Request::is('admin/products/edit*') ? 'active' : '' }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>تعديل منتج</p>
-                </a>
-              </li>
             </ul>
           </li>
 
